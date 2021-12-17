@@ -1,15 +1,13 @@
 package com.example.ProjetoHotel.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="quarto")
 public class Quarto {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name="idQuarto")
     private Integer idQuarto;
     @Column (name="tamanhoMetros")
