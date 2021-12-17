@@ -8,7 +8,7 @@ public class Hospede {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column Integer id;
+    @Column Integer idHospede;
 
     @Column(name = "nome")
     private String nome;
@@ -31,8 +31,8 @@ public class Hospede {
     public Hospede() {
     }
 
-    public Hospede(Integer id, String nome, String email, String telefone, float limite, Integer idQuarto, Boolean ativo) {
-        this.id = id;
+    public Hospede(Integer idHospede, String nome, String email, String telefone, float limite, Integer idQuarto, Boolean ativo) {
+        this.idHospede = idHospede;
         this.nome = nome;
         this.email = email;
         this.telefone = telefone;
@@ -42,11 +42,11 @@ public class Hospede {
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.idHospede = id;
     }
 
     public Integer getId() {
-        return id;
+        return idHospede;
     }
 
     public String getNome() {
