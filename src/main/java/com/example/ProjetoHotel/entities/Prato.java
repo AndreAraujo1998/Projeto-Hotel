@@ -9,22 +9,22 @@ public class Prato {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idPrato")
-    public Integer idPrato;
+    private Integer idPrato;
 
     @Column(name = "nomePrato")
-    public String nomePrato;
+    private String nomePrato;
 
     @Column(name = "descricao")
-    public String descricao;
+    private String descricao;
 
     @Column(name = "valor")
-    public Float valor;
+    private Float valor;
 
     @Column(name = "idPedido")
-    public Integer idPedido;
+    private Integer idPedido;
 
     @Column(name= "ativo")
-    public Boolean ativo;
+    private Boolean ativo;
 
     public Integer getIdPrato() {
         return idPrato;
