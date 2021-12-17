@@ -1,4 +1,4 @@
-package com.example.ProjetoHotel.controllers;
+package com.example.ProjetoHotel.controller;
 
 import com.example.ProjetoHotel.Mensagem;
 import com.example.ProjetoHotel.entities.Salario;
