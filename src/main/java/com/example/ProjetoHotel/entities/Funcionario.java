@@ -9,22 +9,22 @@ public class Funcionario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idFuncionario")
-    private Integer IdFuncionario;
+    public Integer IdFuncionario;
 
     @Column(name = "nome")
-    private String nome;
+    public String nome;
 
     @Column(name = "email")
-    private String email;
+    public String email;
 
     @Column(name="telefone")
-    private String telefone;
+    public String telefone;
 
     @Column(name="idSalario")
-    private Float idSalario;
+    public Float idSalario;
 
     @Column(name= "ativo")
-    private Boolean ativo;
+    public Boolean ativo;
 
 
     public Integer getIdFuncionario() {
