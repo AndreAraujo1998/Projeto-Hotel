@@ -41,8 +41,29 @@ public class PedidoController {
         return msg;
     }
 
+    @PostMapping
+    public Mensagem alterar (@RequestBody Pedido pedido){
+        pedidoRepository.save(pedido);
+        pedidoRepository.flush();
 
+        Mensagem msg = new Mensagem();
+        msg.setMensagem("alteração completa");
 
+        return msg;
+    }
+
+    @DeleteMapping("{id}")
+    public Mensagem deletar(@PathVariable Integer id){
+        Pedido excluir = pedidoRepository.findById(id).get();
+        excluir.setAtivo(false);
+        pedidoRepository.save(excluir);
+        pedidoRepository.flush();
+
+        Mensagem msg = new Mensagem();
+        msg.setMensagem("Pedido Deletado");
+
+        return msg;
+    }
 
 
 
