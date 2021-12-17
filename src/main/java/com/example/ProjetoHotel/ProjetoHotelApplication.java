@@ -7,7 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ProjetoHotelApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(ProjetoHotelApplication.class, args);
+		System.out.println("Abriiiu!");
 	}
 
 }
