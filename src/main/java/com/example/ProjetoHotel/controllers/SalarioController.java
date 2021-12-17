@@ -1,12 +1,11 @@
 package com.example.ProjetoHotel.controllers;
 
+import com.example.ProjetoHotel.Mensagem;
 import com.example.ProjetoHotel.entities.Salario;
 import com.example.ProjetoHotel.repositories.SalarioRepository;
+import org.hibernate.boot.model.source.spi.PluralAttributeElementSourceAssociation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,4 +27,26 @@ public class SalarioController {
         Salario salario = salarioRepository.findById(id).get();
         return salario;
     }
+
+    @PostMapping
+    public Salario incluir (@RequestBody Salario salario){
+
+        System.out.println("Incluindo salario: " + salario.getSalarioBruto());
+        salario.setId(0);
+        salarioRepository.save(salario);
+        salarioRepository.flush();
+        return salario;
+    }
+
+    @PutMapping
+    public Mensagem alterar(@RequestBody Salario salario){
+        System.out.println("Alterando o Salario: " + salario.getSalarioBruto());
+        salarioRepository.save(salario);
+        salarioRepository.flush();
+
+        Mensagem msg = new Mensagem();
+        msg.setMensagem("OK!");
+        return msg;
+    }
+
 }
