@@ -1,6 +1,7 @@
 package com.example.ProjetoHotel.controller;
 
 
+import com.example.ProjetoHotel.Mensagem;
 import com.example.ProjetoHotel.entities.Pedido;
 import com.example.ProjetoHotel.repositories.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,19 @@ public class PedidoController {
     public Pedido buscar(@PathVariable Integer id){
         Pedido pedido = pedidoRepository.findById(id).get();
         return pedido;
+    }
+
+    @PostMapping
+    public Mensagem incluir (@RequestBody Pedido pedido){
+        System.out.println("Incluindo pedido: " + pedido.getIdPedido());
+        pedido.setIdPedido(0);
+        pedidoRepository.save(pedido);
+        pedidoRepository.flush();
+
+        Mensagem msg = new Mensagem();
+        msg.setMensagem("inclusao completa");
+
+        return msg;
     }
 
 
