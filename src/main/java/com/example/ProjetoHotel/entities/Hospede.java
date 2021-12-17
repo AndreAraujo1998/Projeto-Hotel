@@ -41,6 +41,10 @@ public class Hospede {
         this.ativo = ativo;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Integer getId() {
         return id;
     }
