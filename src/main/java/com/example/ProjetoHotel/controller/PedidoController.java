@@ -60,7 +60,7 @@ public class PedidoController {
         pedidoRepository.flush();
 
         Mensagem msg = new Mensagem();
-        msg.setMensagem("Pedido Deletado");
+        msg.setMensagem("Pedido Deletado!");
 
         return msg;
     }
