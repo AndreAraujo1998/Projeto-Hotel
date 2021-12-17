@@ -43,7 +43,7 @@ public class PedidoController {
 
 
 
-<<<<<<< HEAD
+
     @DeleteMapping("{id}")
     public Mensagem deletar(@PathVariable Integer id){
         Pedido excluir = pedidoRepository.findById(id).get();
@@ -56,17 +56,5 @@ public class PedidoController {
 
         return msg;
     }
-=======
->>>>>>> e770c428cf8b57537503d266722cb7d812379d34
-
-
-
-
-
-
-
-
-
-
 
 }
