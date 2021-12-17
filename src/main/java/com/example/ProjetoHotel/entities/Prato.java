@@ -23,7 +23,54 @@ public class Prato {
     @Column(name = "idPedido")
     public Integer idPedido;
 
+    @Column(name= "ativo")
+    public Boolean ativo;
 
+    public Integer getIdPrato() {
+        return idPrato;
+    }
 
+    public void setIdPrato(Integer idPrato) {
+        this.idPrato = idPrato;
+    }
 
+    public String getNomePrato() {
+        return nomePrato;
+    }
+
+    public void setNomePrato(String nomePrato) {
+        this.nomePrato = nomePrato;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Float getValor() {
+        return valor;
+    }
+
+    public void setValor(Float valor) {
+        this.valor = valor;
+    }
+
+    public Integer getIdPedido() {
+        return idPedido;
+    }
+
+    public void setIdPedido(Integer idPedido) {
+        this.idPedido = idPedido;
+    }
+
+    public Boolean getAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(Boolean ativo) {
+        this.ativo = ativo;
+    }
 }
