@@ -10,9 +10,6 @@ public class Salario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column Integer id;
 
-    @Column(name = "idFuncionario")
-    private Integer idFuncionario;
-
     @Column(name = "salarioBruto")
     private float salarioBruto;
 
@@ -25,9 +22,8 @@ public class Salario {
     public Salario() {
     }
 
-    public Salario(Integer id, Integer idFuncionario, float salarioBruto, float credito, float debito) {
+    public Salario(Integer id, float salarioBruto, float credito, float debito) {
         this.id = id;
-        this.idFuncionario = idFuncionario;
         this.salarioBruto = salarioBruto;
         this.credito = credito;
         this.debito = debito;
@@ -39,14 +35,6 @@ public class Salario {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getIdFuncionario() {
-        return idFuncionario;
-    }
-
-    public void setIdFuncionario(Integer idFuncionario) {
-        this.idFuncionario = idFuncionario;
     }
 
     public float getSalarioBruto() {
