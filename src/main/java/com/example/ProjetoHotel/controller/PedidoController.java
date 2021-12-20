@@ -30,14 +30,11 @@ public class PedidoController {
 
     @PostMapping
     public Mensagem incluir (@RequestBody Pedido pedido){
-        System.out.println("Incluindo pedido: " + pedido.getIdPedido());
         pedido.setIdPedido(0);
         pedidoRepository.save(pedido);
         pedidoRepository.flush();
-
         Mensagem msg = new Mensagem();
         msg.setMensagem("inclusao completa");
-
         return msg;
     }
 
