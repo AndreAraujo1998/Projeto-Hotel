@@ -71,7 +71,7 @@ public class QuartoController {
         quartoRepository.flush();
 
         Mensagem msg = new Mensagem();
-        msg.setMensagem("OK2");
+        msg.setMensagem("OK");
         return msg;
 
     }
