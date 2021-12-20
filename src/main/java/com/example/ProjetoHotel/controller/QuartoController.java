@@ -4,6 +4,7 @@ package com.example.ProjetoHotel.controller;
 import com.example.ProjetoHotel.Mensagem;
 import com.example.ProjetoHotel.entities.Quarto;
 import com.example.ProjetoHotel.repositories.QuartoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 @RequestMapping("Quarto")
 public class QuartoController {
 
+    @Autowired
     private QuartoRepository quartoRepository;
 
     @GetMapping()
