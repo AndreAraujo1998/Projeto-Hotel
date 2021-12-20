@@ -2,6 +2,7 @@ package com.example.ProjetoHotel.controller;
 
 
 import com.example.ProjetoHotel.Mensagem;
+import com.example.ProjetoHotel.entities.Funcionario;
 import com.example.ProjetoHotel.entities.Pedido;
 import com.example.ProjetoHotel.repositories.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,15 @@ public class PedidoController {
         pedidoRepository.flush();
         Mensagem msg = new Mensagem();
         msg.setMensagem("inclusao completa");
+        return msg;
+    }
+
+    @PutMapping  //Mapeia o POST na URL
+    public Mensagem alterar(@RequestBody Pedido pedido) {
+        pedidoRepository.save(pedido);
+        pedidoRepository.flush();
+        Mensagem msg = new Mensagem();
+        msg.setMensagem("edicao completa");
         return msg;
     }
 
