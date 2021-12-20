@@ -1,6 +1,7 @@
 package com.example.ProjetoHotel.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "funcionario")
@@ -8,24 +9,27 @@ public class Funcionario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idFuncionario")
-    public Integer IdFuncionario;
+    @Column(name = "idFuncionario", nullable = false, length = 10 )
+    @Pattern(regexp ="[0-9]{10}", message = "O codigo de ser um numero inteiro")
 
-    @Column(name = "nome")
-    public String nome;
+    private Integer IdFuncionario;
+
+
+    @Column(name = "nome", nullable = false, length = 50)
+    @Pattern(regexp = "[A-z]{10,50}", message = "O nome deve ter entre 10 e 50 caracteres")
+    private String nome;
 
     @Column(name = "email")
-    public String email;
+    private String email;
 
     @Column(name="telefone")
-    public String telefone;
+    private String telefone;
 
     @Column(name="idSalario")
-    public Float idSalario;
+    private Float idSalario;
 
     @Column(name= "ativo")
-    public Boolean ativo;
-
+    private Boolean ativo;
 
     public Integer getIdFuncionario() {
         return IdFuncionario;
