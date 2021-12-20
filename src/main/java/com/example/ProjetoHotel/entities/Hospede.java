@@ -1,6 +1,7 @@
 package com.example.ProjetoHotel.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "hospede")
@@ -8,38 +9,35 @@ public class Hospede {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column Integer idHospede;
+    @Column (name = "idHospede", nullable = false, length = 10)
+    @Pattern(regexp = "^[0-9]{10}$", message = "Esse codigo precisa ser um numero inteiro.")
+    private Integer idHospede;
 
-    @Column(name = "nome")
+
+    @Column(name = "nome", nullable = false, length = 50)
+    @Pattern(regexp = "^[A-Za-z\s]{10,50}$", message = "O nome precisa ter entre 10 a 50 caracteres.")
     private String nome;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false, length = 60)
+    @Pattern(regexp = "^[A-z0-9]{1,20}@[A-z]{1,15}\\.([A-z]{1,10}|[A-z]{1,10}\\.[A-z]{1,5})$", message = "Email invalido.")
     private String email;
 
-    @Column(name = "telefone")
+    @Column(name = "telefone", nullable = false, length = 15)
+    @Pattern(regexp = "^\\([0-9]{2}\\)[0-9]{5}-[0-9]{4}$", message = "Numero de telefone invalido.")
     private String telefone;
 
-    @Column(name = "limiteCredito")
+    @Column(name = "limiteCredito", nullable = false, length = 10)
+    @Pattern(regexp = "^[0-9]{1,10}\\.[0-9]{1,4}$", message = "valor inserido para o limite de credito invalido")
     private float limite;
 
-    @Column(name = "idQuarto")
+    @Column(name = "idQuarto", nullable = false, length = 10)
+    @Pattern(regexp = "^[0-9]{10}$", message = "Valor de IdQuarto Invalido.")
     private Integer idQuarto;
 
     @Column(name = "ativo")
     private Boolean ativo;
 
-    public Hospede() {
-    }
 
-    public Hospede(Integer idHospede, String nome, String email, String telefone, float limite, Integer idQuarto, Boolean ativo) {
-        this.idHospede = idHospede;
-        this.nome = nome;
-        this.email = email;
-        this.telefone = telefone;
-        this.limite = limite;
-        this.idQuarto = idQuarto;
-        this.ativo = ativo;
-    }
 
     public void setId(Integer id) {
         this.idHospede = id;
