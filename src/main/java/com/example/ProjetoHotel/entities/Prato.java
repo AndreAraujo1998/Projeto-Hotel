@@ -20,9 +20,6 @@ public class Prato {
     @Column(name = "valor")
     public Float valor;
 
-    @Column(name = "idPedido")
-    public Integer idPedido;
-
     @Column(name= "ativo")
     public Boolean ativo;
 
@@ -58,13 +55,6 @@ public class Prato {
         this.valor = valor;
     }
 
-    public Integer getIdPedido() {
-        return idPedido;
-    }
-
-    public void setIdPedido(Integer idPedido) {
-        this.idPedido = idPedido;
-    }
 
     public Boolean getAtivo() {
         return ativo;

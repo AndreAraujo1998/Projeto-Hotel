@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Pedido {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column Integer idPedido;
 
     @Column (name = "idQuarto")
