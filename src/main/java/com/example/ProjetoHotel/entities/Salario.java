@@ -19,16 +19,6 @@ public class Salario {
     @Column(name = "debito")
     private float debito;
 
-    public Salario() {
-    }
-
-    public Salario(Integer id, float salarioBruto, float credito, float debito) {
-        this.id = id;
-        this.salarioBruto = salarioBruto;
-        this.credito = credito;
-        this.debito = debito;
-    }
-
     public Integer getId() {
         return id;
     }
