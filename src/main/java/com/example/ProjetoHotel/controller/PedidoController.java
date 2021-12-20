@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("pedido")
+@RequestMapping("Pedido")
 public class PedidoController {
 
     @Autowired
@@ -40,9 +40,6 @@ public class PedidoController {
 
         return msg;
     }
-
-
-
 
     @DeleteMapping("{id}")
     public Mensagem deletar(@PathVariable Integer id){
