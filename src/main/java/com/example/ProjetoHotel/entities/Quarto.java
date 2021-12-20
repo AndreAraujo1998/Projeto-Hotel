@@ -1,6 +1,7 @@
 package com.example.ProjetoHotel.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name="quarto")
@@ -8,20 +9,34 @@ public class Quarto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name="idQuarto")
+    @Column (name="idQuarto", nullable = false, length = 10)
+    @Pattern(regexp = "[0-9]{10}]", message = "o codigo deve ser um inteiro")
     private Integer idQuarto;
-    @Column (name="tamanhoMetros")
+
+    @Column (name="tamanhoMetros",nullable = false, length = 20)
+    @Pattern(regexp = "^[1-9]\\d*(\\.\\d+)?$", message = "o codigo deve ser um inteiro")
     private Float tamanhoMetros;
-    @Column (name="nome")
+
+    @Column (name="nome",nullable = false, length = 20)
+    @Pattern(regexp = "[A-Z]{20}]", message = "o codigo deve ser um inteiro")
     private String nome;
-    @Column (name="precoDia")
+
+    @Column (name="precoDia",nullable = false, length = 10)
+    @Pattern(regexp = "^[1-9]\\d*(\\.\\d+)?$", message = "o codigo deve ser um inteiro")
     private Float precoDia;
-    @Column (name="quantidadePessoas")
+
+    @Column (name="quantidadePessoas",nullable = false, length = 10)
+    @Pattern(regexp = "[0-9]{10}]", message = "o codigo deve ser um inteiro")
     private Integer quantidadePessoas;
-    @Column (name="andar")
+
+    @Column (name="andar",nullable = false, length = 10)
+    @Pattern(regexp = "[0-9]{10}]", message = "o codigo deve ser um inteiro")
     private Integer andar;
-    @Column (name="numero")
+
+    @Column (name="numero",nullable = false, length = 10)
+    @Pattern(regexp = "[0-9]{10}]", message = "o codigo deve ser um inteiro")
     private Integer numero;
+
     @Column (name="ativo")
     private Boolean ativo;
 

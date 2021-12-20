@@ -1,33 +1,18 @@
 package com.example.ProjetoHotel.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "pedido")
 public class Pedido {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column Integer idPedido;
-
-    @Column (name = "idQuarto")
-    private Integer idQuarto;
-
-    @Column (name = "valor")
-    private double valor;
-
-    @Column (name = "idFuncionario")
-    private Integer idFuncionario;
-
-    @Column (name = "ativo")
-    private Boolean ativo;
-
     public Integer getIdPedido() {
-        return idPedido;
+        return IdPedido;
     }
 
     public void setIdPedido(Integer idPedido) {
-        this.idPedido = idPedido;
+        IdPedido = idPedido;
     }
 
     public Integer getIdQuarto() {
@@ -61,4 +46,25 @@ public class Pedido {
     public void setAtivo(Boolean ativo) {
         this.ativo = ativo;
     }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column  Integer IdPedido;
+    @Pattern(regexp = "[0-9]{10}]", message = "o codigo deve ser um inteiro")
+
+    @Column (name = "idQuarto", nullable = false, length = 10)
+    @Pattern(regexp = "[0-9]{10}]", message = "o codigo deve ser um inteiro")
+    private Integer idQuarto;
+
+    @Column (name = "valor", nullable = false, length = 10)
+    @Pattern(regexp = "[0-9]{1,10}]", message = "o codigo deve ser um inteiro")
+    private double valor;
+
+    @Column (name = "idFuncionario", nullable = false, length = 10)
+    @Pattern(regexp = "[0-9]{10}]", message = "o codigo deve ser um inteiro")
+    private Integer idFuncionario;
+
+    @Column (name = "ativo")
+    private Boolean ativo;
+
 }
