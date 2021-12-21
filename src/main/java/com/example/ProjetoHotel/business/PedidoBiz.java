@@ -4,6 +4,7 @@ import com.example.ProjetoHotel.entities.Pedido;
 import com.example.ProjetoHotel.entities.Quarto;
 import com.example.ProjetoHotel.repositories.FuncionarioRepository;
 import com.example.ProjetoHotel.repositories.PedidoRepository;
+import com.example.ProjetoHotel.repositories.QuartoRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 public class PedidoBiz {
 
     PedidoRepository pedidoRepository;
+    QuartoRepository quartoRepository;
     private Pedido pedido;
     private List<String> erros;
 
@@ -62,6 +64,19 @@ public class PedidoBiz {
         } else{
             return true;
         }
+    }
+
+    public Boolean verificaIdQuarto (Integer idQuarto){
+        Integer id = quartoRepository.findByIdQuarto(idQuarto).size();
+
+        if(id > 0){
+            return true;
+        } else {
+            erros.add("O id quarto deve ser válido")
+            return false;
+        }
+
+
     }
 
 }
