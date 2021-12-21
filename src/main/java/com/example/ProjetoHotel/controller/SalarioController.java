@@ -42,25 +42,28 @@ public class SalarioController {
             salarioRepository.flush();
             msg.setMensagem("Salario incluido com sucesso!!");
 
-        }else{
+        } else {
             msg.setErros(salarioBiz.getErros());
             msg.setMensagem("Erro ao incluir o salario: ");
         }
-
-
-
-
         return msg;
     }
 
     @PutMapping
     public Mensagem alterar(@RequestBody Salario salario){
-        System.out.println("Alterando o Salario: " + salario.getSalarioBruto());
-        salarioRepository.save(salario);
-        salarioRepository.flush();
-
         Mensagem msg = new Mensagem();
-        msg.setMensagem("OK!");
+        salarioBiz = new SalarioBiz(salario, salarioRepository);
+
+        if (salarioBiz.isValid()) {
+            System.out.println("Alterando o Salario: " + salario.getSalarioBruto());
+            salarioRepository.save(salario);
+            salarioRepository.flush();
+            msg.setMensagem("OK!");
+        } else {
+            msg.setErros(salarioBiz.getErros());
+            msg.setMensagem("Erro ao editar o salario: ");
+        }
+
         return msg;
     }
 
