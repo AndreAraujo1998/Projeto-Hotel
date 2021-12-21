@@ -1,6 +1,7 @@
 package com.example.ProjetoHotel.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "salario")
@@ -8,33 +9,32 @@ public class Salario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column Integer id;
+    @Column(name = "idSalario", nullable = false, length = 10)
+    @Pattern(regexp = "[0-9]{10}", message = "O código deve ser inteiro")
+    private Integer IdSalario;
+
 
     @Column(name = "salarioBruto")
+    @Pattern(regexp = "[0-9]{1,10}.[0-9]{0,2}", message = "O valor deve ser inserido com . e com duas casas decimais.")
     private float salarioBruto;
 
-    @Column(name = "credito")
+
+    @Column(name = "credito", nullable = false, length = 10)
+    @Pattern(regexp = "[0-9]{10}", message = "O código deve ser inteiro")
     private float credito;
 
-    @Column(name = "debito")
+    @Column(name = "debito" , nullable = false, length = 10)
+    @Pattern(regexp = "[0-9]{10}", message = "O código deve ser inteiro")
     private float debito;
 
-    public Salario() {
-    }
 
-    public Salario(Integer id, float salarioBruto, float credito, float debito) {
-        this.id = id;
-        this.salarioBruto = salarioBruto;
-        this.credito = credito;
-        this.debito = debito;
-    }
 
     public Integer getId() {
-        return id;
+        return IdSalario;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(Integer IdSalario) {
+        this.IdSalario = IdSalario;
     }
 
     public float getSalarioBruto() {
