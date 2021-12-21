@@ -49,7 +49,8 @@ public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column  Integer IdPedido;
+    @Column(name="idpedido")
+    Integer IdPedido;
     @Pattern(regexp = "[0-9]{10}]", message = "o codigo deve ser um inteiro")
 
     @Column (name = "idQuarto", nullable = false, length = 10)
