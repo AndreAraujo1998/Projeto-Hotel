@@ -72,7 +72,7 @@ public class PedidoBiz {
         if(id > 0){
             return true;
         } else {
-            erros.add("O id quarto deve ser válido")
+            erros.add("O id quarto deve ser válido");
             return false;
         }
 
