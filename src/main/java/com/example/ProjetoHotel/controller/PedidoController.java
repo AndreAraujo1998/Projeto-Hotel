@@ -2,7 +2,7 @@ package com.example.ProjetoHotel.controller;
 
 
 import com.example.ProjetoHotel.Mensagem;
-import com.example.ProjetoHotel.entities.Funcionario;
+import com.example.ProjetoHotel.business.PedidoBiz;
 import com.example.ProjetoHotel.entities.Pedido;
 import com.example.ProjetoHotel.repositories.PedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,17 +25,25 @@ public class PedidoController {
 
     @GetMapping("/{id}")
     public Pedido buscar(@PathVariable Integer id){
+
         Pedido pedido = pedidoRepository.findById(id).get();
         return pedido;
     }
 
     @PostMapping
     public Mensagem incluir (@RequestBody Pedido pedido){
-        pedido.setIdPedido(0);
-        pedidoRepository.save(pedido);
-        pedidoRepository.flush();
+        PedidoBiz pedidoBiz = new PedidoBiz(pedido, pedidoRepository);
         Mensagem msg = new Mensagem();
-        msg.setMensagem("inclusao completa");
+
+        if (pedidoBiz.isValid()){
+            pedido.setIdQuarto(0);
+            pedidoRepository.save(pedido);
+            pedidoRepository.flush();
+            msg.setMensagem("Pedido incluido com suscesso!");
+        } else{
+            msg.setErros(pedidoBiz.getErros());
+            msg.setMensagem("Erro ao incluir pedido: ");
+        }
         return msg;
     }
 
