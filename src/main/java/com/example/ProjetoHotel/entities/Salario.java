@@ -27,7 +27,25 @@ public class Salario {
     @Pattern(regexp = "[0-9]{10}", message = "O código deve ser inteiro")
     private float debito;
 
+    @Column(name = "idFuncionario", nullable = false, length = 10)
+    @Pattern(regexp = "^[0-9]{10}$", message = "Valor de idFuncionario Invalido.")
+    private Integer idFuncionario;
 
+    public Integer getIdSalario() {
+        return IdSalario;
+    }
+
+    public void setIdSalario(Integer idSalario) {
+        IdSalario = idSalario;
+    }
+
+    public Integer getIdFuncionario() {
+        return idFuncionario;
+    }
+
+    public void setIdFuncionario(Integer idFuncionario) {
+        this.idFuncionario = idFuncionario;
+    }
 
     public Integer getId() {
         return IdSalario;

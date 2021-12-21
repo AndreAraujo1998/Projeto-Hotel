@@ -1,6 +1,7 @@
 package com.example.ProjetoHotel.controller;
 
 import com.example.ProjetoHotel.Mensagem;
+import com.example.ProjetoHotel.business.SalarioBiz;
 import com.example.ProjetoHotel.entities.Salario;
 import com.example.ProjetoHotel.repositories.SalarioRepository;
 import org.hibernate.boot.model.source.spi.PluralAttributeElementSourceAssociation;
@@ -12,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("salario")
 public class SalarioController {
+    private SalarioBiz salarioBiz;
 
     @Autowired
     private SalarioRepository salarioRepository;
@@ -29,13 +31,26 @@ public class SalarioController {
     }
 
     @PostMapping
-    public Salario incluir (@RequestBody Salario salario){
+    public Mensagem incluir (@RequestBody Salario salario){
+        Mensagem msg = new Mensagem();
+        salarioBiz = new SalarioBiz(salario, salarioRepository);
 
-        System.out.println("Incluindo salario: " + salario.getSalarioBruto());
-        salario.setId(0);
-        salarioRepository.save(salario);
-        salarioRepository.flush();
-        return salario;
+        if(salarioBiz.isValid()){
+            System.out.println("Incluindo salario: " + salario.getSalarioBruto());
+            salario.setId(0);
+            salarioRepository.save(salario);
+            salarioRepository.flush();
+            msg.setMensagem("Salario incluido com sucesso!!");
+
+        }else{
+            msg.setErros(salarioBiz.getErros());
+            msg.setMensagem("Erro ao incluir o salario: ");
+        }
+
+
+
+
+        return msg;
     }
 
     @PutMapping

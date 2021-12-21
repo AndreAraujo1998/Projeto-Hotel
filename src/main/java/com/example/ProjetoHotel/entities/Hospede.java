@@ -19,7 +19,7 @@ public class Hospede {
     private String nome;
 
     @Column(name = "email", nullable = false, length = 60)
-    @Pattern(regexp = "^[A-z0-9]{1,20}@[A-z]{1,15}\\.([A-z]{1,10}|[A-z]{1,10}\\.[A-z]{1,5})$", message = "Email invalido.")
+    @Pattern(regexp = "^[A-z0-9_]{1,20}@[A-z]{1,15}\\.([A-z]{1,10}|[A-z]{1,10}\\.[A-z]{1,5})$", message = "Email invalido.")
     private String email;
 
     @Column(name = "telefone", nullable = false, length = 15)
