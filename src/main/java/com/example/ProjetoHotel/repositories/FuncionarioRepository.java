@@ -10,4 +10,6 @@ import java.util.List;
 public interface FuncionarioRepository extends JpaRepository<Funcionario, Integer> {
 
     List<Funcionario> findByAtivo(Boolean ativo);
+    List<Funcionario> findByNome(String nome);
+
 }

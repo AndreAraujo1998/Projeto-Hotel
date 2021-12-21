@@ -1,6 +1,8 @@
 package com.example.ProjetoHotel.controller;
 
 
+import com.example.ProjetoHotel.Mensagem;
+import com.example.ProjetoHotel.business.FuncionarioBiz;
 import com.example.ProjetoHotel.entities.Funcionario;
 import com.example.ProjetoHotel.repositories.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +31,20 @@ public class FuncionarioController {
     }
 
     @PostMapping //Mapeia o POST na URL
-    public Funcionario incluir(@RequestBody Funcionario funcionario) {
-        funcionario.setIdFuncionario(0);
-        funcionarioRepository.save(funcionario);
-        funcionarioRepository.flush(); //Comando para gravar a nova aposta efetivamente
-        return funcionario;
+    public Mensagem incluir(@RequestBody Funcionario funcionario) {
+        FuncionarioBiz funcionarioBiz = new FuncionarioBiz(funcionario, funcionarioRepository);
+        Mensagem msg= new Mensagem();
+
+        if (funcionarioBiz.isValid()) {
+            funcionario.setIdFuncionario(0);
+            funcionarioRepository.save(funcionario);
+            funcionarioRepository.flush(); //Comando para gravar a nova aposta efetivamente
+            msg.setMensagem("Funcionario incluido com sucesso!");
+        } else {
+            msg.setErros(funcionarioBiz.getErros());
+            msg.setMensagem("Erro ao incluir funciario: ");
+        }
+        return msg;
     }
 
     @PutMapping  //Mapeia o POST na URL
