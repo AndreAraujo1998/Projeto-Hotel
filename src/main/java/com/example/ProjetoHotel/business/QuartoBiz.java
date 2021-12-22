@@ -40,6 +40,7 @@ public class QuartoBiz {
         Boolean resultado;
         resultado = validPrecoDia(this.quarto.getPrecoDia());
         resultado = validTamanhoQrt(this.quarto.getTamanhoMetros())&& resultado;
+        resultado = validAtivoQuarto(this.quarto.getAtivo()) && resultado;
         return resultado;
     }
 
