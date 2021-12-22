@@ -19,6 +19,7 @@ public class QuartoBiz {
 
 
     QuartoRepository quartoRepository;
+    private Quarto quarto;
 
     private List<String> erros;
     public List<String> getErros() {
@@ -29,19 +30,22 @@ public class QuartoBiz {
     }
 
 
-    /*public QuartoBiz(Quarto p, QuartoRepository quartoRepository){
+    public QuartoBiz(Quarto q, QuartoRepository quartoRepository){
         erros = new ArrayList<>();
-        this.qua
-    }*/
+        this.quarto = q;
+        this.quartoRepository = quartoRepository;
+    }
 
-    /*public Boolean isValid(){
+    public Boolean isValid(){
         Boolean resultado;
-        resultado = validPrecoDia(this.q)
-    }*/
+        resultado = validPrecoDia(this.quarto.getPrecoDia());
+        resultado = validTamanhoQrt(this.quarto.getTamanhoMetros())&& resultado;
+        return resultado;
+    }
 
 
 
-    public Boolean validTamanhoQrt(Integer tamanhoMetros){
+    public Boolean validTamanhoQrt(float tamanhoMetros){
         if (tamanhoMetros > 3){
             return true;
         } else{
