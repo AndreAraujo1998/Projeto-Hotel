@@ -1,8 +1,11 @@
 package com.example.ProjetoHotel.controller;
 
 
+import com.example.ProjetoHotel.Mensagem;
+import com.example.ProjetoHotel.business.HospedeBiz;
 import com.example.ProjetoHotel.entities.Hospede;
 import com.example.ProjetoHotel.repositories.HospedeRepository;
+import com.example.ProjetoHotel.repositories.QuartoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +17,8 @@ public class HospedeController {
 
     @Autowired
     private HospedeRepository hospedeRepository;
+    @Autowired
+    private QuartoRepository quartoRepository;
 
     @GetMapping()
     public List<Hospede> listar() {
@@ -28,12 +33,23 @@ public class HospedeController {
     }
 
     @PostMapping //Mapeia o POST na URL
-    public Hospede incluir(@RequestBody Hospede hospede) {
-        hospede.setId(0);
-        hospedeRepository.save(hospede);
-        hospedeRepository.flush(); //Comando para gravar a nova aposta efetivamente
-        return hospede;
-    }
+    public Mensagem incluir(@RequestBody Hospede hospede) {
+        HospedeBiz hospedeBiz = new HospedeBiz(hospede, hospedeRepository, quartoRepository);
+        Mensagem msg= new Mensagem();
+
+        if (hospedeBiz.isValid()) {
+            hospede.setId(0);
+            hospedeRepository.save(hospede);
+            hospedeRepository.flush(); //Comando para gravar a nova aposta efetivamente
+            msg.setMensagem("hospede inserido com sucesso");
+        }else{
+                msg.setErros(hospedeBiz.getErros());
+                msg.setMensagem("Erro ao incluir hospede: ");
+        }
+
+        return msg;
+}
+
 
     @PutMapping  //Mapeia o POST na URL
     public Hospede alterar(@RequestBody Hospede hospede) {
