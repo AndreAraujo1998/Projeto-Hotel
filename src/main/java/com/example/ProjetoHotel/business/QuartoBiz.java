@@ -1,7 +1,11 @@
 package com.example.ProjetoHotel.business;
 
+import com.example.ProjetoHotel.entities.Pedido;
+import com.example.ProjetoHotel.entities.Quarto;
+import com.example.ProjetoHotel.repositories.PedidoRepository;
 import com.example.ProjetoHotel.repositories.QuartoRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class QuartoBiz {
@@ -17,25 +21,43 @@ public class QuartoBiz {
     QuartoRepository quartoRepository;
 
     private List<String> erros;
-
     public List<String> getErros() {
         return erros;
     }
-
     public void setErros(List<String> erros) {
         this.erros = erros;
     }
 
-    public boolean validTamanhoQrt(Integer tamanhoMetros){
+
+    /*public QuartoBiz(Quarto p, QuartoRepository quartoRepository){
+        erros = new ArrayList<>();
+        this.qua
+    }*/
+
+    /*public Boolean isValid(){
+        Boolean resultado;
+        resultado = validPrecoDia(this.q)
+    }*/
+
+
+
+    public Boolean validTamanhoQrt(Integer tamanhoMetros){
         if (tamanhoMetros > 3){
             return true;
         } else{
             erros.add("O tamanho do quarto deve ser maior que 3m quadrados");
             return false;
         }
-
     }
 
+    public Boolean validPrecoDia (float precoDia){
+        if (precoDia > 100 && precoDia < 1000){
+            return true;
+        }else{
+            erros.add("O valor do quarto deve ser maior que R$100,00 e menor que R$1.000,00 ");
+            return false;
+        }
+    }
 
 
 
