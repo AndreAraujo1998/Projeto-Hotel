@@ -15,5 +15,4 @@ public interface QuartoRepository extends JpaRepository<Quarto,Integer> {
 
 
 
-
 }
