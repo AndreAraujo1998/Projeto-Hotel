@@ -43,8 +43,6 @@ public class QuartoBiz {
         return resultado;
     }
 
-
-
     public Boolean validTamanhoQrt(float tamanhoMetros){
         if (tamanhoMetros > 3){
             return true;
@@ -63,7 +61,32 @@ public class QuartoBiz {
         }
     }
 
+    public Boolean validQuantidadePessoas(Integer quantidadePessoas){
+        if (quantidadePessoas >0 &&  quantidadePessoas <=5){
+            return true;
+        }else{
+            erros.add("A quantidade de pessoas em cada quarto deve ser maior que 0 e menor que 5");
+            return false;
+        }
+    }
+
+    public Boolean validAndar(Integer andar){
+        if (andar >0 && andar <20) {
+            return true;
+        }else{
+            erros.add("O andar do quarto deve ser maior que 0 e menor que 20");
+            return false;
+        }
+    }
 
 
+    public Boolean validNumeroQuarto (Integer numero){
+        if (numero >=100 && numero <=1000){
+            return true;
+        }else{
+            erros.add("O número do quarto deve ser menor ou igual a zero e menor ou igual a 1000");
+            return false;
+        }
+    }
 
 }
