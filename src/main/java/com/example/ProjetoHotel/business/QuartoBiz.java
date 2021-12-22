@@ -63,7 +63,14 @@ public class QuartoBiz {
         }
     }
 
-
+    public Boolean validAtivoQuarto(Boolean ativo){
+        if (!ativo){
+            erros.add("O quarto deve estar ativado");
+            return false;
+        }else {
+            return true;
+        }
+    }
 
 
 }
