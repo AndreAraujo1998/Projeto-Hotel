@@ -2,6 +2,7 @@ package com.example.ProjetoHotel.controller;
 
 
 import com.example.ProjetoHotel.Mensagem;
+import com.example.ProjetoHotel.business.QuartoBiz;
 import com.example.ProjetoHotel.entities.Quarto;
 import com.example.ProjetoHotel.repositories.QuartoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +31,19 @@ public class QuartoController {
 
     @PostMapping()
     public Mensagem incluir(@RequestBody Quarto quarto){
-        quarto.setIdQuarto(0);
-        quartoRepository.save(quarto);
-        quartoRepository.flush();
 
+        QuartoBiz quartoBiz = new QuartoBiz(quarto, quartoRepository);
         Mensagem msg = new Mensagem();
-        msg.setMensagem("OK");
+
+        if (quartoBiz.isValid()){
+            quarto.setIdQuarto(0);
+            quartoRepository.save(quarto);
+            quartoRepository.flush();
+            msg.setMensagem("Quarto Inserido com Sucesso!");
+        }else{
+            msg.setErros(quartoBiz.getErros());
+            msg.setMensagem("Erro ao incluir quarto!");
+        }
         return msg;
     }
 
