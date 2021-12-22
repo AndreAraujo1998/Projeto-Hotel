@@ -11,4 +11,8 @@ public interface QuartoRepository extends JpaRepository<Quarto,Integer> {
 
     List<Quarto> findByAtivo(Boolean ativo);
     List<Quarto> findByIdQuarto (Integer idQuarto);
+
+
+
+
 }

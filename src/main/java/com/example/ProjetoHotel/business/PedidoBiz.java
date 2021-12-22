@@ -35,6 +35,7 @@ public class PedidoBiz {
         resultado = idValido(this.pedido.getIdQuarto());
         resultado = valorValido(this.pedido.getValor()) && resultado;
         resultado = verificaAtivo(this.pedido.getAtivo()) && resultado;
+        //resultado = verificaIdQuarto.(this.pedido.getIdQuarto()) && resultado;
         return resultado;
     }
 
