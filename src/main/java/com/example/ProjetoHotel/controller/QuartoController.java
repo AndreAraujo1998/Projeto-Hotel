@@ -49,11 +49,19 @@ public class QuartoController {
 
     @PutMapping()
     public Mensagem alterar(@RequestBody Quarto quarto){
-        quartoRepository.save(quarto);
-        quartoRepository.flush();
 
         Mensagem msg = new Mensagem();
-        msg.setMensagem("OK");
+        QuartoBiz quartoBiz = new QuartoBiz(quarto, quartoRepository);
+
+        if (quartoBiz.isValid()){
+            quarto.setIdQuarto(0);
+            quartoRepository.save(quarto);
+            quartoRepository.flush();
+            msg.setMensagem("Quarto Inserido com Sucesso!");
+        }else{
+            msg.setErros(quartoBiz.getErros());
+            msg.setMensagem("Erro ao incluir quarto!");
+        }
         return msg;
     }
 

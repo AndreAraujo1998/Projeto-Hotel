@@ -62,7 +62,7 @@ public class QuartoBiz {
         }
     }
 
-<<<<<<< HEAD
+
     public Boolean validQuantidadePessoas(Integer quantidadePessoas){
         if (quantidadePessoas >0 &&  quantidadePessoas <=5){
             return true;
@@ -81,7 +81,7 @@ public class QuartoBiz {
         }
     }
 
-=======
+
     public Boolean validAtivoQuarto(Boolean ativo){
         if (!ativo){
             erros.add("O quarto deve estar ativado");
@@ -90,7 +90,7 @@ public class QuartoBiz {
             return true;
         }
     }
->>>>>>> 5d961e41de6b30a5bc6c458417913b5fc2b5e5a1
+
 
     public Boolean validNumeroQuarto (Integer numero){
         if (numero >=100 && numero <=1000){
